@@ -1,0 +1,13 @@
+<!-- '{{}}' sirve para interpolar y dar valor asignado en el constructor de 'videojuego.component.ts'-->
+<h2>{{titulo}}</h2>
+<ul>
+   <!-- Directiva '*ngFor' (Para recorrer el arreglo 'zapatillas[]')-->
+   <li *ngFor="let elemento_zapatilla of zapatillas">
+      {{elemento_zapatilla.nombre}} - <strong>{{elemento_zapatilla.precio}} $</strong>
+      <!-- Directiva '*ngIf' (uso de condicionales)-->
+      <span *ngIf = "elemento_zapatilla.precio <= 80"
+         [style.background]="elemento_zapatilla.precio <= 80 ? 'green' : 'transparent'"
+         [style.color]="elemento_zapatilla.precio <= 80 ? 'white' : 'black'">Â¡EN OFERTA!</span>
+   </li>
+</ul>
+
