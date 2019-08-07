@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -27,11 +28,13 @@ import { CursosComponent } from './cursos/cursos.component';
     ,ZapatillasComponent
 
     //Cargando directivas de componente creada 'videojuegos'
-    , CursosComponent 
+    , CursosComponent
 
   ],
   imports: [
     BrowserModule
+    //Cargando modulo 'FormsModule'
+    ,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
