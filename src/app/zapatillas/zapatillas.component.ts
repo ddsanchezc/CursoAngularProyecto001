@@ -53,4 +53,17 @@ export class ZapatillasComponent implements OnInit{ //Para usar clase en otra co
       this.marcas_zapatillas.push(this.mi_marca);
    }
 
+   borrarMarca(indice){
+      // delete this.marcas_zapatillas[indice];
+      this.marcas_zapatillas.splice(indice,1); // Recibe parametro indice y 1 elemento a eliminar
+   }
+   
+   onBlur(){
+      console.log("Has salido del input :v");
+   }
+
+   mostrarPalabra(){
+      alert(this.mi_marca);
+   }
+
 }

@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html,
-body {
-  font-family: sans-serif;
+.altoPrecio{
+  color: gray;
+  font-size: 18px;
+}
+
+.fondoRojo{
+  background: red;
+}
+
+.subrayado{
+  text-decoration: underline;
 }

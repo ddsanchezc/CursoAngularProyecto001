@@ -3,9 +3,11 @@
 
 <p>Añadir marca</p>
 <!-- Preparando two data binding -->
-<p><input type="text" [(ngModel)]="mi_marca"></p>
-<button (click)="getMarca()">Mostrar marca</button>
+<!-- <p><input type="text" [(ngModel)]="mi_marca" (blur)="onBlur()"></p> -->
+<!--Captura tecla enter en el input -->
+<p><input type="text" [(ngModel)]="mi_marca" (keyup.enter)="mostrarPalabra()"></p> 
 
+<button (click)="getMarca()">Mostrar marca</button>
 <button (click)="addMarca()">Añadir marca</button>
 
 <!--Para mostrar lo que se ingresa en el input: -->
@@ -15,7 +17,10 @@
    Compra las zapatillas de las mejores marcas
 </p>
 <ul>
-   <li *ngFor="let marca of marcas_zapatillas; let indice = index">{{indice + ' ' + marca}}</li>
+   <li *ngFor="let marca of marcas_zapatillas; let indice = index">
+      {{indice + ' ' + marca}}
+      <button (click) = "borrarMarca(indice)">Borrar</button>
+   </li>
 </ul>
 
 <p>Las deportivas que tenemos disponibles son:</p>
@@ -25,12 +30,21 @@
    <li *ngFor="let elemento_zapatilla of zapatillas">
       <span [ngStyle]="{
          'text-decoration': !elemento_zapatilla.stock ? 'line-through' :'none'
-      }">{{elemento_zapatilla.nombre}} - <strong>{{elemento_zapatilla.precio}} $</strong></span>
-      
+      }">{{elemento_zapatilla.nombre}} - 
+      <strong 
+         [class.altoPrecio]="elemento_zapatilla.precio >= 80"
+         [ngClass]="{
+            'fondoRojo': elemento_zapatilla.precio > 100,
+            'subrayado': elemento_zapatilla.marca == 'Nike' 
+         }">
+         {{elemento_zapatilla.precio}} $
+      </strong>
+   </span>
+
       <!-- Directiva '*ngIf' (uso de condicionales)-->
-      <span *ngIf = "elemento_zapatilla.precio <= 80"
-         [style.background]="elemento_zapatilla.precio <= 80 ? 'green' : 'transparent'"
-         [style.color]="elemento_zapatilla.precio <= 80 ? 'white' : 'black'">¡EN OFERTA!</span>
+      <span *ngIf = "elemento_zapatilla.precio < 80"
+         [style.background]="elemento_zapatilla.precio < 80 ? 'green' : 'transparent'"
+         [style.color]="elemento_zapatilla.precio < 80 ? 'white' : 'black'">¡EN OFERTA!</span>
    </li> 
 </ul>
 

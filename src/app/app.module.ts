@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+// Importar routing
+import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent } from './app.component';
 
@@ -17,26 +19,33 @@ import { ZapatillasComponent } from './zapatillas/zapatillas.component';
 //Componente creada mediante 'ng generate component'--> cursos.component.ts
 import { CursosComponent } from './cursos/cursos.component';
 
+import { HomeComponent } from './home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent
     
     //Cargando directivas de componente creada 'videojuegos'
-    ,VideoJuegoComponent 
+    , VideoJuegoComponent 
 
     //Cargando directivas de componente creada 'videojuegos'
-    ,ZapatillasComponent
+    , ZapatillasComponent
 
     //Cargando directivas de componente creada 'videojuegos'
-    , CursosComponent
+    , CursosComponent, HomeComponent
 
   ],
   imports: [
     BrowserModule
-    //Cargando modulo 'FormsModule'
-    ,FormsModule
+    // Cargando modulo 'FormsModule'
+    , FormsModule
+    // Cargando modulo 'routing'
+    , routing
   ],
-  providers: [],
+  providers: [
+    // Aqui van los servicios
+    appRoutingProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
